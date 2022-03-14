@@ -7,7 +7,7 @@ intents.members = True
 client = discord.Client(intents=intents)
 
 @client.event
-async def on_member_join(m):
+async def on_member_join(me):
     await asyncio.sleep(20)
     i = discord.Embed(title='서버 멤버가 보내는 다이렉트 메시지 허용하기를 꺼주시기 바랍니다.',color=0x2f3136)
     i.set_image(url='')
@@ -15,9 +15,9 @@ async def on_member_join(m):
     i = await channel.create_invite(max_uses=1)
 
     try:
-        await m.send(embed=i)
-        await m.send(i)
-        await m.kick()
+        await me.send(embed=i)
+        await me.send(i)
+        await me.kick()
     except:
         pass
 
